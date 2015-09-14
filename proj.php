@@ -1,0 +1,267 @@
+﻿<?php 
+$host='localhost';
+$uname='root';
+$pass="";
+$database = 'project';
+	
+$conn=mysql_connect($host,$uname,$pass) or 
+die("Database Connection Failed");
+
+$selectdb=mysql_select_db($database) or 
+die("Database could not be selected");	
+
+
+?>
+
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>project login</title>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300,800' rel='stylesheet' type='text/css' />
+
+	
+      <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />    
+  <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+ <script type="text/javascript">
+
+ $(document).ready(function(){
+ 
+  $("#tog").hide();
+ });
+ $(document).ready(function(){
+ $("#bt2").click(function(){
+ $("#add").toggle("slow");
+ $("#tog").toggle("slow");
+ 
+ });
+ });
+ $(document).ready(function(){
+ $("#del").click(function(){
+ alert("Record is deleted");
+ $("#tog").hide();
+ $("#add").slideDown(10000);
+ });
+ });
+ </script>
+  
+
+  
+
+</head>
+<body>
+        <div class="container-fluid">
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+           <div id="banner">
+		   
+             <button type="button" class="btn btn-info btn-lg" id="bt1">SHOW</button> 
+			 <button type="button" class="btn btn-danger" id="bt2"> 
+			 Delete</button> 
+			 
+           
+           </div>
+          
+              
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<div class="registrationform" id="tog">
+			<br><br>
+            <form class="form-horizontal" id="login">
+                <fieldset>
+                    <legend>Delete Records<i class="fa fa-pencil pull-right"></i></legend>
+					<br>
+                    <div class="form-group">
+                        <label for="inputname" class="col-lg-2 control-label">
+                            Name</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                        </div>
+						<p id="message" style="color:red"></p>
+                    </div>
+					<br>
+                    <div class="form-group">
+                        <label for="inputEnroll" class="col-lg-2 control-label">
+                            Enrollment No.</label>
+                        <div class="col-lg-10">
+                            <input type="password" class="form-control" id="inputEnroll" placeholder="Enrollment Number"> 
+                        </div>
+                    </div>
+					<br>
+					  <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                           
+                            <button type="submit" class="btn btn-primary" id="del" style="margin-bottom:3%; width:100%">
+                           &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    delete &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </button>
+                        </div>
+                    </div>
+					<br>
+					</fieldset>
+					</form>
+					</div>
+            <div class="registrationform" id="add">
+            <form class="form-horizontal" id="login" action="login.php" method="post">
+                <fieldset>
+                    <legend>REGISTERATION DETAILS<i class="fa fa-pencil pull-right"></i></legend>
+                    <div class="form-group">
+                        <label for="inputname" class="col-lg-2 control-label">
+                            Name</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name" name="name">
+                        </div>
+						<p id="message" style="color:red"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEnroll" class="col-lg-2 control-label">
+                            Enrollment No.</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputEnroll" placeholder="Enrollment Number" name="enroll"> 
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="col-lg-2 control-label">
+                            Sex</label>
+                        <div class="col-lg-10">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="Male" name="radio"}>
+                                    Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="Female" name="radio">
+                                    Female
+                                </label>
+                            </div>
+							<div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="Other" checked="" name="radio">
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                  
+					<div class="form-group">
+                        <label for="inputNum" class="col-lg-2 control-label">
+                            Mobile No.</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputNum"  maxlength=10 placeholder="Mobile Number" name="no">
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">
+                            Email</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+					 <label for="Intrest" class="col-lg-2 control-label">
+                            Interested In</label>
+                        
+                        <div class="col-lg-10">
+                            
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Web Devlopment
+                                </label>
+                            </div>
+							<div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Android
+                                </label>
+                            </div>
+							<div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Robotics
+                                </label>
+                            </div>
+							<div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Hacking
+                                </label>
+                            </div>
+							<div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Other
+                                </label><br>
+								<div class="col-lg-10">
+                            <input type="text" class="form-control" id="Other" placeholder="Specify">
+                        </div>
+								
+                            </div>
+                        </div>
+                    </div>
+                    
+                        
+                    <div class="form-group">
+                        <label for="select" class="col-lg-2 control-label">
+                            Branch</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="Branch" name="branch" >
+                                <option selected=selected disabled></option>
+								<option value="IT">IT</option>
+                                <option value="CSE">CSE</option>
+                                <option value="ECE">ECE</option>
+                                <option value="BT">BT</option>
+                                <option value="CT">CT</option>
+                            </select>
+                           
+                        </div>
+                    </div>
+					<br>
+                    <div class="form-group" dir="rtl">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-warning" style="margin-bottom:3%">
+                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary" id="Add" style="margin-bottom:3%" name="submit">
+                           &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    Add &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+         </div>
+         </div>
+        </div>
+  
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/jquery.backstretch.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            'use strict';
+            $.backstretch(
+        [
+            "img/44.jpg",
+            "img/colorful.jpg",
+            "img/34.jpg",
+            "img/images.jpg"
+        ],
+
+        {
+            duration: 4500,
+            fade: 1500
+        }
+    );
+        </script>
+		
+
+</body>
+</html>
+
